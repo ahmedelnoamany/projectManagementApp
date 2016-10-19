@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('Todos', {
+    return queryInterface.createTable('Boards', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,12 +10,6 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING
-      },
-      complete: {
-        type: Sequelize.BOOLEAN
-      },
-      UserId: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -28,6 +22,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('Todos');
+    return queryInterface.dropTable('Boards');
   }
 };
