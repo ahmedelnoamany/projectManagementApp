@@ -25,7 +25,7 @@ export default class Home extends React.Component{
       <div className="ui blue submit button">Login</div>
     </div>
   </div>
-  <div className="ui vertical divider" align: "Center">
+  <div className="ui vertical divider">
     Or
   </div>
   <div className="center aligned column">
