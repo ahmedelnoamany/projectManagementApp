@@ -1,14 +1,15 @@
 import React from 'react';
 import Nav from '../nav';
+import { Container } from 'stardust';
 
-import './index.scss';
+import 'semantic-ui-css/semantic.min.css';
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <Container>
       <Nav />
       <main id="content">{children}</main>
-    </div>
+    </Container>
   );
 }
 

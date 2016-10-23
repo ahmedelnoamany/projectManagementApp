@@ -1,18 +1,72 @@
 import React from 'react';
+import cookie from 'react-cookie';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import routes from '../routes';
+import { Menu, Button } from 'stardust'
 
 const mapStateToProps = state => ({ title: state.get('title') });
 
-export let Nav = ({ title }) => (
-  <nav className="navbar navbar-full navbar-dark bg-inverse">
-    <a className="navbar-brand" href="/">{title}</a>
-    <div className="nav navbar-nav">
-      {routes.map(r => <Link className="nav-item nav-link" key={r.path} to={r.path}>{r.title}</Link>)}
-    </div>
-  </nav>
-);
+export class Nav extends React.Component {
+  render() {
+    const token = cookie.load('token');
+    console.log(token)
+    const registered = cookie.load('registered');
+    const { title } = this.props;
+    return (
+      <Menu stackable>
+        <Menu.Item
+          name={title}
+          as={Link}
+          to="/"
+        />
+
+        <Menu.Item
+          name="home"
+          as={Link}
+          to="/"
+        />
+
+        <Menu.Item
+          name="Boards"
+          as={Link}
+          to="/boards"
+        />
+
+        <Menu.Item
+          name="about"
+          as={Link}
+          to="/about"
+        />
+
+        <Menu.Menu position='right'>
+          {!token && (
+            <Menu.Item
+              name="login"
+              as={Link}
+              to="/login" />
+          )}
+
+          {!registered && !token && (
+            <Menu.Item>
+              <Button primary as={Link} to="/signup">Sign Up</Button>
+            </Menu.Item>
+          )}
+
+          {token && (
+            <Menu.Item
+              name="logout"
+              onClick={() => {
+                cookie.remove('token');
+                cookie.remove('userid');
+                cookie.remove('registered');
+                this.forceUpdate();
+              }} />
+          )}
+        </Menu.Menu>
+      </Menu>
+    )
+  }
+}
 
 Nav.displayName = 'Nav';
 

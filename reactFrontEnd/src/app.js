@@ -83,7 +83,7 @@ export default (options) => {
         <Provider store={store}>
           <Router history={history}>
             <Route component={LayoutWrapper}>
-              {routes.map(route => <Route key={route.path} path={route.path} component={route.component} />)}
+              {routes()}
             </Route>
           </Router>
         </Provider>,
