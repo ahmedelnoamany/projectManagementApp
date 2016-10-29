@@ -13,9 +13,9 @@ export default class Home extends React.Component{
           </ Header>
         </Header>
         <Segment padded>
-          <Button color="blue" as={Link} to="/login" fluid>Log In</Button>
+          <Button size="large" color="blue" as={Link} to="/login" fluid>Log In</Button>
           <Divider horizontal>Or</Divider>
-          <Button color="green" as={Link} to="/signup" fluid>Sign Up</Button>
+          <Button size="massive" color="green" as={Link} to="/signup" fluid>Sign Up</Button>
         </Segment>
       </div>
     )

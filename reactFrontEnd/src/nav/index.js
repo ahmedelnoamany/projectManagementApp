@@ -48,7 +48,7 @@ export class Nav extends React.Component {
 
           {!registered && !token && (
             <Menu.Item>
-              <Button primary as={Link} to="/signup">Sign Up</Button>
+              <Button color='green' as={Link} to="/signup">Sign Up</Button>
             </Menu.Item>
           )}
 
