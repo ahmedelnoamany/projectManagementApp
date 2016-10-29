@@ -1,39 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router';
-import {Divider, Button} from 'stardust';
+import {Header, Button, Segment, Divider} from 'stardust';
 
 export default class Home extends React.Component{
   render(){
     return(
-      <div className="ui two column middle aligned relaxed fitted stackable grid">
-  <div className="column">
-    <div className="ui form segment"allign = center>
-      <div className="field">
-        <label>Username</label>
-        <div className="ui left icon input">
-          <input type="text" placeholder="Username" />
-          <i className="user icon"></i>
-        </div>
+      <div>
+        <Header as='h3' color = 'brown' textAlign='center' dividing>
+          A project management solution created by
+          <Header sub>
+            Lauren and Ahmed
+          </ Header>
+        </Header>
+        <Segment padded>
+          <Button color="blue" as={Link} to="/login" fluid>Log In</Button>
+          <Divider horizontal>Or</Divider>
+          <Button color="green" as={Link} to="/signup" fluid>Sign Up</Button>
+        </Segment>
       </div>
-      <div className="field">
-        <label>Password</label>
-        <div className="ui left icon input">
-          <input type="password" />
-          <i className="lock icon"></i>
-        </div>
-      </div>
-      <div className="ui blue submit button">Login</div>
-    </div>
-  </div>
-  <div className="ui horizontal divider">
-    Or
-  </div>
-  <div className="center aligned column">
-      <Button primary as={Link} to="/signup">Sign Up</Button>
-  </div>
-</div>
     )
   }
 }
 
 Home.displayName = 'Home';
+// <div className="ui horizontal center aligned divider">
+//  Or
+// </div>

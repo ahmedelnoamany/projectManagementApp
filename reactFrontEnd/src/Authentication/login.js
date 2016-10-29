@@ -1,9 +1,27 @@
 import React from 'react';
 import axios from 'axios';
 import cookie from 'react-cookie';
+import { connect } from 'react-redux';
 import { Button, Form, Message } from 'stardust';
+import { signInSuccess } from '../data/auth';
 
-export default
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.loggedIn,
+    userid: state.userid,
+    token: state.token
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    signInSuccess: (loggedIn, userid, token) => {
+      dispatch(signInSuccess(loggedIn, userid, token))
+    }
+  }
+}
+
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +42,7 @@ class Login extends React.Component {
     .then((response) => {
       cookie.save('userid', response.data.userid);
       cookie.save('token', response.data.token);
+      this.props.signInSuccess(true, response.data.userid, response.data.token)
       this.setState({ error: false });
     })
     .catch((error) => {
@@ -69,3 +88,4 @@ class Login extends React.Component {
     )
   }
 }
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
