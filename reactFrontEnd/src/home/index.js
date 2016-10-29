@@ -7,7 +7,7 @@ export default class Home extends React.Component{
     return(
       <div className="ui two column middle aligned relaxed fitted stackable grid">
   <div className="column">
-    <div className="ui form segment">
+    <div className="ui form segment"allign = center>
       <div className="field">
         <label>Username</label>
         <div className="ui left icon input">
@@ -25,7 +25,7 @@ export default class Home extends React.Component{
       <div className="ui blue submit button">Login</div>
     </div>
   </div>
-  <div className="ui vertical divider">
+  <div className="ui horizontal divider">
     Or
   </div>
   <div className="center aligned column">
